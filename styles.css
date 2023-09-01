@@ -41,3 +41,8 @@ body {
     background-color:green;
     border:1px solid white;
 }
+
+/* inputs */
+#color-input, #range-input{
+    width: 100%;
+}
