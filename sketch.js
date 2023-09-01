@@ -2,7 +2,7 @@ const container = document.getElementById('grid-container');
 const sizeInput = document.getElementById('size-input');
 const colorInput = document.getElementById('color-input');
 const backgroundColorInput = document.getElementById('background-color-input');
-
+const clearButton = document.getElementById('clear-btn');
 function changeColor(color) {
     const squares = document.querySelectorAll('.square');
     
@@ -43,6 +43,11 @@ sizeInput.addEventListener('change', () => {
 colorInput.addEventListener('change', () => {
     changeColor(colorInput.value);
 })
+
 backgroundColorInput.addEventListener('change', () => {
+    changeBackgroundColor(backgroundColorInput.value);
+})
+
+clearButton.addEventListener('click', () => {
     changeBackgroundColor(backgroundColorInput.value);
 })
