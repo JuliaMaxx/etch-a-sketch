@@ -63,12 +63,17 @@ function changeGridColor(color) {
 function changeBackgroundColor(color) {
     squares.forEach((square) => {
         backgroundColor = backgroundColorInput.value;
-        console.log(backgroundColor);
         if (previousBackgroundColor === rgbToHex(square.style.backgroundColor)){
             square.style.backgroundColor = color;
         } 
     })
     previousBackgroundColor = backgroundColorInput.value;
+}
+
+function clearBackgroundColor(color) {
+    squares.forEach((square) => { 
+            square.style.backgroundColor = color;
+    })
 }
 
 setGrid(16);
@@ -90,7 +95,7 @@ backgroundColorInput.addEventListener('change', () => {
 })
 
 clearButton.addEventListener('click', () => {
-    changeBackgroundColor(backgroundColorInput.value);
+    clearBackgroundColor(backgroundColorInput.value);
 })
 
 toggleGridButton.addEventListener('click', () => {
