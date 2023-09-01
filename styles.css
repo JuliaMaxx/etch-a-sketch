@@ -16,6 +16,4 @@ body {
 .square {
     background-color:green;
     border:1px solid white;
-    width: auto;
-    height: auto;
 }

@@ -1,18 +1,26 @@
 const container = document.getElementById('grid-container');
-container.style.gridTemplateColumns = 'repeat(16, 1fr)';
-container.style.gridTemplateRows = 'repeat(16, 1fr)';
-
-for (let i=0; i<16*16; i++) {
-    const newDiv = document.createElement('div');
-    newDiv.className = 'square';
-    container.append(newDiv);
+const sizeRange = document.getElementById('size-input');
+function setGrid(size){
+    container.innerHTML = '';
+    console.log(size);
+    container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    for (let i=0; i<size*size; i++) {
+        const newDiv = document.createElement('div');
+        newDiv.className = 'square';
+        container.append(newDiv);
+    }
+    const squares = document.querySelectorAll('.square');
+    
+    squares.forEach((square) => {
+        square.addEventListener('mouseover', () => {
+            square.style.backgroundColor = 'black';
+        })
+    })
 }
 
+setGrid(16);
 
-const squares = document.querySelectorAll('.square');
-
-squares.forEach((square) => {
-    square.addEventListener('mouseover', () => {
-        square.style.backgroundColor = 'black';
-    })
+sizeRange.addEventListener('change', () => {
+     setGrid(sizeRange.value); 
 })
