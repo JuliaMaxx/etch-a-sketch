@@ -36,7 +36,7 @@ function setGrid(size){
     for (let i = 0; i < size*size; i++) {
         const newDiv = document.createElement('div');
         newDiv.className = 'square grid';
-        newDiv.style.backgroundColor = 'rgb(255, 255, 255)';
+        newDiv.style.backgroundColor = backgroundColorInput.value;
         prevBg = newDiv.style.backgroundColor;
         container.append(newDiv);
     }
