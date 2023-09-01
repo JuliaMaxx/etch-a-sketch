@@ -1,0 +1,21 @@
+/* general */
+body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+}
+
+/* grid */
+#grid-container {
+    width: 500px;
+    height: 500px;
+    display: grid;
+    align-self: center;
+}
+.square {
+    background-color:green;
+    border:1px solid white;
+    width: auto;
+    height: auto;
+}
