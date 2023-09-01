@@ -39,6 +39,8 @@ body {
 }
 .square {
     background-color:white;
+}
+.square.grid {
     border: 0.4px solid black;
 }
 

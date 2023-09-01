@@ -3,6 +3,8 @@ const sizeInput = document.getElementById('size-input');
 const colorInput = document.getElementById('color-input');
 const backgroundColorInput = document.getElementById('background-color-input');
 const clearButton = document.getElementById('clear-btn');
+const toggleGridButton = document.getElementById('toggle-grid');
+
 function changeColor(color) {
     const squares = document.querySelectorAll('.square');
     
@@ -27,7 +29,7 @@ function setGrid(size){
     container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     for (let i = 0; i < size*size; i++) {
         const newDiv = document.createElement('div');
-        newDiv.className = 'square';
+        newDiv.className = 'square grid';
         container.append(newDiv);
     }
     changeColor(colorInput.value);
@@ -50,4 +52,10 @@ backgroundColorInput.addEventListener('change', () => {
 
 clearButton.addEventListener('click', () => {
     changeBackgroundColor(backgroundColorInput.value);
+})
+
+toggleGridButton.addEventListener('click', () => {
+    const squares = document.querySelectorAll('.square');
+
+    squares.forEach(square => square.classList.toggle('grid'));
 })
