@@ -6,32 +6,6 @@ const backgroundColorInput = document.getElementById('background-color-input');
 const clearButton = document.getElementById('clear-btn');
 const toggleGridButton = document.getElementById('toggle-grid');
 
-function changeColor(color) {
-    const squares = document.querySelectorAll('.square');
-    
-    squares.forEach((square) => {
-        square.addEventListener('mouseover', () => {
-            square.style.backgroundColor = color;
-        })
-    })
-}
-
-function changeGridColor(color) {
-    const squares = document.querySelectorAll('.square');
-    
-    squares.forEach((square) => {
-            square.style.borderColor = color;
-    })
-}
-
-function changeBackgroundColor(color) {
-    const squares = document.querySelectorAll('.square');
-    
-    squares.forEach((square) => {
-            square.style.backgroundColor = color;   
-    })
-}
-
 function setGrid(size){
     container.innerHTML = '';
     container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -41,9 +15,30 @@ function setGrid(size){
         newDiv.className = 'square grid';
         container.append(newDiv);
     }
+    squares = document.querySelectorAll('.square');;
     changeColor(colorInput.value);
     changeGridColor(gridColorInput.value);
     changeBackgroundColor(backgroundColorInput.value);
+}
+
+function changeColor(color) {  
+    squares.forEach((square) => {
+        square.addEventListener('mouseover', () => {
+            square.style.backgroundColor = color;
+        })
+    })
+}
+
+function changeGridColor(color) {
+    squares.forEach((square) => {
+        square.style.borderColor = color;
+    })
+}
+
+function changeBackgroundColor(color) {
+    squares.forEach((square) => {
+        square.style.backgroundColor = color;   
+    })
 }
 
 setGrid(16);
@@ -69,7 +64,5 @@ clearButton.addEventListener('click', () => {
 })
 
 toggleGridButton.addEventListener('click', () => {
-    const squares = document.querySelectorAll('.square');
-
     squares.forEach(square => square.classList.toggle('grid'));
 })
