@@ -1,6 +1,8 @@
 const container = document.getElementById('grid-container');
 const sizeInput = document.getElementById('size-input');
 const colorInput = document.getElementById('color-input');
+const backgroundColorInput = document.getElementById('background-color-input');
+
 function changeColor(color) {
     const squares = document.querySelectorAll('.square');
     
@@ -10,6 +12,15 @@ function changeColor(color) {
         })
     })
 }
+
+function changeBackgroundColor(color) {
+    const squares = document.querySelectorAll('.square');
+    
+    squares.forEach((square) => {
+            square.style.backgroundColor = color;   
+    })
+}
+
 function setGrid(size){
     container.innerHTML = '';
     container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -20,6 +31,7 @@ function setGrid(size){
         container.append(newDiv);
     }
     changeColor(colorInput.value);
+    changeBackgroundColor(backgroundColorInput.value);
 }
 
 setGrid(16);
@@ -30,4 +42,7 @@ sizeInput.addEventListener('change', () => {
 
 colorInput.addEventListener('change', () => {
     changeColor(colorInput.value);
+})
+backgroundColorInput.addEventListener('change', () => {
+    changeBackgroundColor(backgroundColorInput.value);
 })

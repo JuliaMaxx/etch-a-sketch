@@ -38,11 +38,11 @@ body {
     align-self: center;
 }
 .square {
-    background-color:green;
-    border:1px solid white;
+    background-color:white;
+    border: 0.4px solid black;
 }
 
 /* inputs */
-#color-input, #range-input{
+input[type=color], #range-input{
     width: 100%;
 }
