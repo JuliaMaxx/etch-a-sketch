@@ -6,6 +6,7 @@ const backgroundColorInput = document.getElementById('background-color-input');
 const clearButton = document.getElementById('clear-btn');
 const toggleGridButton = document.getElementById('toggle-grid');
 let previousBackgroundColor = '#ffffff';
+let backgroundColor = '#ffffff';
 
 function rgbToHex(rgb) {
     const values = rgb.match(/\d+/g);
@@ -39,7 +40,7 @@ function setGrid(size){
         prevBg = newDiv.style.backgroundColor;
         container.append(newDiv);
     }
-    squares = document.querySelectorAll('.square');;
+    squares = document.querySelectorAll('.square');
     changeColor(colorInput.value);
     changeGridColor(gridColorInput.value);
     changeBackgroundColor(backgroundColorInput.value);
@@ -61,6 +62,8 @@ function changeGridColor(color) {
 
 function changeBackgroundColor(color) {
     squares.forEach((square) => {
+        backgroundColor = backgroundColorInput.value;
+        console.log(backgroundColor);
         if (previousBackgroundColor === rgbToHex(square.style.backgroundColor)){
             square.style.backgroundColor = color;
         } 
