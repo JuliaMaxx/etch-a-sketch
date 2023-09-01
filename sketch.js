@@ -5,6 +5,7 @@ const gridColorInput = document.getElementById('grid-color-input');
 const backgroundColorInput = document.getElementById('background-color-input');
 const clearButton = document.getElementById('clear-btn');
 const toggleGridButton = document.getElementById('toggle-grid');
+const toggleEraserButton = document.getElementById('toggle-eraser');
 let previousBackgroundColor = '#ffffff';
 let backgroundColor = '#ffffff';
 
@@ -46,7 +47,8 @@ function setGrid(size){
     changeBackgroundColor(backgroundColorInput.value);
 }
 
-function changeColor(color) {  
+function changeColor(color) { 
+    toggleEraserButton.classList.remove('on'); 
     squares.forEach((square) => {
         square.addEventListener('mouseover', () => {
             square.style.backgroundColor = color;
@@ -101,3 +103,23 @@ clearButton.addEventListener('click', () => {
 toggleGridButton.addEventListener('click', () => {
     squares.forEach(square => square.classList.toggle('grid'));
 })
+
+
+toggleEraserButton.addEventListener('click', () => {
+    toggleEraserButton.classList.toggle('on');
+    if(toggleEraserButton.className === 'on') {
+        squares.forEach(square => {
+            square.addEventListener('mouseover', () => {
+                square.style.backgroundColor = backgroundColor;
+            })
+        })
+    }
+    else{
+        squares.forEach(square => {
+            square.addEventListener('mouseover', () => {
+                square.style.backgroundColor = colorInput.value;
+            })
+        })
+    }
+})
+
