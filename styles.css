@@ -37,9 +37,6 @@ body {
     display: grid;
     align-self: center;
 }
-.square {
-    background-color:white;
-}
 .square.grid {
     border: 0.4px solid black;
 }

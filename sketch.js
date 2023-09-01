@@ -5,6 +5,28 @@ const gridColorInput = document.getElementById('grid-color-input');
 const backgroundColorInput = document.getElementById('background-color-input');
 const clearButton = document.getElementById('clear-btn');
 const toggleGridButton = document.getElementById('toggle-grid');
+let previousBackgroundColor = '#ffffff';
+
+function rgbToHex(rgb) {
+    const values = rgb.match(/\d+/g);
+
+    if (!values || values.length !== 3) {
+        return rgb;
+    }
+
+    const red = parseInt(values[0]);
+    const green = parseInt(values[1]);
+    const blue = parseInt(values[2]);
+
+    const toHex = (color) => {
+        let hex = color.toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+    };
+
+    const hexColor = "#" + toHex(red) + toHex(green) + toHex(blue);
+
+    return hexColor;
+}
 
 function setGrid(size){
     container.innerHTML = '';
@@ -13,6 +35,8 @@ function setGrid(size){
     for (let i = 0; i < size*size; i++) {
         const newDiv = document.createElement('div');
         newDiv.className = 'square grid';
+        newDiv.style.backgroundColor = 'rgb(255, 255, 255)';
+        prevBg = newDiv.style.backgroundColor;
         container.append(newDiv);
     }
     squares = document.querySelectorAll('.square');;
@@ -37,8 +61,11 @@ function changeGridColor(color) {
 
 function changeBackgroundColor(color) {
     squares.forEach((square) => {
-        square.style.backgroundColor = color;   
+        if (previousBackgroundColor === rgbToHex(square.style.backgroundColor)){
+            square.style.backgroundColor = color;
+        } 
     })
+    previousBackgroundColor = backgroundColorInput.value;
 }
 
 setGrid(16);
