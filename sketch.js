@@ -1,6 +1,7 @@
 const container = document.getElementById('grid-container');
 const sizeInput = document.getElementById('size-input');
 const colorInput = document.getElementById('color-input');
+const gridColorInput = document.getElementById('grid-color-input');
 const backgroundColorInput = document.getElementById('background-color-input');
 const clearButton = document.getElementById('clear-btn');
 const toggleGridButton = document.getElementById('toggle-grid');
@@ -12,6 +13,14 @@ function changeColor(color) {
         square.addEventListener('mouseover', () => {
             square.style.backgroundColor = color;
         })
+    })
+}
+
+function changeGridColor(color) {
+    const squares = document.querySelectorAll('.square');
+    
+    squares.forEach((square) => {
+            square.style.borderColor = color;
     })
 }
 
@@ -33,6 +42,7 @@ function setGrid(size){
         container.append(newDiv);
     }
     changeColor(colorInput.value);
+    changeGridColor(gridColorInput.value);
     changeBackgroundColor(backgroundColorInput.value);
 }
 
@@ -44,6 +54,10 @@ sizeInput.addEventListener('change', () => {
 
 colorInput.addEventListener('change', () => {
     changeColor(colorInput.value);
+})
+
+gridColorInput.addEventListener('change', () => {
+    changeGridColor(gridColorInput.value);
 })
 
 backgroundColorInput.addEventListener('change', () => {
