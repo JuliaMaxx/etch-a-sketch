@@ -14,7 +14,10 @@ const toggleDarkenButton = document.getElementById('toggle-darken');
 const toggleLightenButton = document.getElementById('toggle-lighten');
 const toggleWarmButton = document.getElementById('toggle-warm');
 const toggleColdButton = document.getElementById('toggle-cold');
+const screenshotButton = document.getElementById('screenshot');
 let previousBackgroundColor = '#ffffff';
+
+
 
 function rgbToHex(rgb) {
     const values = rgb.match(/\d+/g);
@@ -401,6 +404,22 @@ togglePastelButton.addEventListener('click', () => {
         restoreDefaultMouseOver();
     }
 })
+
+screenshotButton.addEventListener("click", function () {
+    html2canvas(container).then(function (canvas) {
+        // Convert the canvas to an image data URL
+        const screenshotDataURL = canvas.toDataURL("image/png");
+
+        // Create a download link
+        const downloadLink = document.createElement("a");
+        downloadLink.href = screenshotDataURL;
+        downloadLink.download = "screenshot.png";
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    });
+});
 
 container.addEventListener('click', () => {
     container.classList.toggle('on');

@@ -5,6 +5,8 @@
     <meta content="width=640, initial-scale=1.0, maximum-scale=1.0, user-scalable=1" name="viewport">
     <title>Etch a Sketch</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="./node_modules/html2canvas/dist/html2canvas.min.js"></script>
+    <script src="./node_modules/downloadjs/download.js"></script>
     <script src="sketch.js" defer></script>
 </head>
 <body>
@@ -28,7 +30,7 @@
             <button id="toggle-pastel">Toggle Pastel</button>
             <button id="toggle-warm">Toggle Warm</button>
             <button id="toggle-cold">Toggle Cold</button>
-            <div>color</div>
+            <button id="screenshot">Make Screenshot</button>
             <div>color</div>
             <div>color</div>
             <input id="size-input" value="16" type="range" min="1" max="64"> 
