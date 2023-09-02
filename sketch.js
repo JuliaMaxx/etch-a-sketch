@@ -41,19 +41,23 @@ function setGrid(size){
         container.append(newDiv);
     }
     squares = document.querySelectorAll('.square');
-    changeColor(colorInput.value);
+    changeColor();
     changeGridColor(gridColorInput.value);
     changeBackgroundColor(backgroundColorInput.value);
 }
 
-function changeColor(color) { 
-    toggleEraserButton.classList.remove('on'); 
-    toggleRainbowButton.classList.remove('on'); 
-    squares.forEach((square) => {
+function defaultEventListener(){
+    squares.forEach(square => {
         square.addEventListener('mouseover', () => {
-            square.style.backgroundColor = color;
+            square.style.backgroundColor = colorInput.value;
         })
     })
+}
+
+function changeColor() { 
+    toggleEraserButton.classList.remove('on'); 
+    toggleRainbowButton.classList.remove('on'); 
+    defaultEventListener();
 }
 
 function changeGridColor(color) {
@@ -77,13 +81,6 @@ function clearBackgroundColor(color) {
     })
 }
 
-function defaultEventListener(){
-    squares.forEach(square => {
-        square.addEventListener('mouseover', () => {
-            square.style.backgroundColor = colorInput.value;
-        })
-    })
-}
 
 setGrid(16);
 
