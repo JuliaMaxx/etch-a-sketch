@@ -313,5 +313,6 @@ toggleRainbowButton.addEventListener('click', () => {
 
 container.addEventListener('click', () => {
     container.classList.toggle('on');
+    checkIfOn()? container.style.cursor = 'url("icons8-cursor-22.png"), auto': container.style.cursor = 'auto';
     changeColor();
 })
