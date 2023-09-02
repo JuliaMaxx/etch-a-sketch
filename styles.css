@@ -6,7 +6,7 @@ body {
     gap: 20px;
     margin: 0px;
     padding:0px;
-    background-image: url('background.jpg');
+    background-image: url('background1.jpg');
     background-size: cover; 
     background-repeat: no-repeat;
     height: 100vh;
@@ -20,6 +20,24 @@ body {
     justify-content: center;
     gap: 8%;
 }
+
+/* shadows */
+:root {
+    --shadow-color: 0deg 0% 0%;
+    --shadow-elevation-low:
+      0.4px -0.4px 0.6px hsl(var(--shadow-color) / 0.28),
+      1.8px -2px 2.7px -3.4px hsl(var(--shadow-color) / 0.21);
+    --shadow-elevation-medium:
+      0.4px -0.4px 0.6px hsl(var(--shadow-color) / 0.26),
+      2px -2.2px 2.9px -1.7px hsl(var(--shadow-color) / 0.22),
+      9px -9.9px 13.2px -3.4px hsl(var(--shadow-color) / 0.17);
+    --shadow-elevation-high:
+      0.4px -0.4px 0.6px hsl(var(--shadow-color) / 0.29),
+      3.5px -3.8px 5.1px -0.8px hsl(var(--shadow-color) / 0.26),
+      9.9px -10.8px 14.5px -1.7px hsl(var(--shadow-color) / 0.23),
+      24.3px -26.6px 35.7px -2.6px hsl(var(--shadow-color) / 0.2),
+      51.5px -56.5px 75.7px -3.4px hsl(var(--shadow-color) / 0.17);
+  }
 
 /* navigation */
 .nav {
@@ -36,9 +54,13 @@ body {
     height: 500px;
     display: grid;
     align-self: center;
+    box-shadow: var(--shadow-elevation-high);
 }
 .square.grid {
     border: 0.4px solid black;
+}
+.square {
+    transition: all 0.15s; 
 }
 
 /* inputs */
