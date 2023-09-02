@@ -6,6 +6,7 @@ const backgroundColorInput = document.getElementById('background-color-input');
 const clearButton = document.getElementById('clear-btn');
 const toggleGridButton = document.getElementById('toggle-grid');
 const toggleEraserButton = document.getElementById('toggle-eraser');
+const toggleRainbowButton = document.getElementById('toggle-rainbow');
 let previousBackgroundColor = '#ffffff';
 
 function rgbToHex(rgb) {
@@ -47,6 +48,7 @@ function setGrid(size){
 
 function changeColor(color) { 
     toggleEraserButton.classList.remove('on'); 
+    toggleRainbowButton.classList.remove('on'); 
     squares.forEach((square) => {
         square.addEventListener('mouseover', () => {
             square.style.backgroundColor = color;
@@ -108,6 +110,27 @@ toggleEraserButton.addEventListener('click', () => {
         squares.forEach(square => {
             square.addEventListener('mouseover', () => {
                 square.style.backgroundColor = backgroundColorInput.value;
+            })
+        })
+    }
+    else{
+        squares.forEach(square => {
+            square.addEventListener('mouseover', () => {
+                square.style.backgroundColor = colorInput.value;
+            })
+        })
+    }
+})
+
+const rainbowColors = ['#e81416', '#ffa500', '#faeb36', '#79c314', '#487de7', '#4b369d', '#70369d'];
+
+toggleRainbowButton.addEventListener('click', () => {
+    toggleRainbowButton.classList.toggle('on');
+    if(toggleRainbowButton.className === 'on') {
+        squares.forEach(square => {
+            square.addEventListener('mouseover', () => {
+                let randomIndex = Math.floor(Math.random() * rainbowColors.length);
+                square.style.backgroundColor = rainbowColors[randomIndex];;
             })
         })
     }
