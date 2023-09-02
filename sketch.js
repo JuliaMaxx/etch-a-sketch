@@ -46,18 +46,39 @@ function setGrid(size){
     changeBackgroundColor(backgroundColorInput.value);
 }
 
-function defaultEventListener(){
+function handleMouseOver(event) {
+    const square = event.target;
+    square.style.backgroundColor = colorInput.value;
+}
+
+function defaultEventListener() {
     squares.forEach(square => {
-        square.addEventListener('mouseover', () => {
-            square.style.backgroundColor = colorInput.value;
-        })
-    })
+        square.addEventListener('mouseover', handleMouseOver);
+    });
+}
+
+function removeDefaultEventListener() {
+    squares.forEach(square => {
+        square.removeEventListener('mouseover', handleMouseOver);
+    });
+}
+
+function checkIfOn(){
+    if(container.className === 'on'){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 function changeColor() { 
     toggleEraserButton.classList.remove('on'); 
-    toggleRainbowButton.classList.remove('on'); 
-    defaultEventListener();
+    toggleRainbowButton.classList.remove('on');
+    squares.forEach(square => {
+        square.addEventListener('mousedown', handleMouseOver);
+    })
+    checkIfOn()? defaultEventListener(): removeDefaultEventListener();
 }
 
 function changeGridColor(color) {
@@ -142,3 +163,7 @@ toggleRainbowButton.addEventListener('click', () => {
     }
 })
 
+container.addEventListener('click', () => {
+    container.classList.toggle('on');
+    changeColor();
+})
