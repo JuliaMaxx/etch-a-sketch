@@ -7,6 +7,7 @@ const clearButton = document.getElementById('clear-btn');
 const toggleGridButton = document.getElementById('toggle-grid');
 const toggleEraserButton = document.getElementById('toggle-eraser');
 const toggleRainbowButton = document.getElementById('toggle-rainbow');
+const toggleTransparentButton = document.getElementById('toggle-transparent');
 let previousBackgroundColor = '#ffffff';
 
 function rgbToHex(rgb) {
@@ -110,6 +111,7 @@ sizeInput.addEventListener('change', () => {
 colorInput.addEventListener('change', () => {
     toggleRainbowButton.classList.remove('on');
     toggleEraserButton.classList.remove('on');
+    toggleTransparentButton.classList.remove('on');
     removeDefaultEventListener();
     handleMouseOver = function(event) {
         const square = event.target;
@@ -137,6 +139,7 @@ toggleGridButton.addEventListener('click', () => {
 
 toggleEraserButton.addEventListener('click', () => {
     toggleRainbowButton.classList.remove('on');
+    toggleTransparentButton.classList.remove('on');
     removeDefaultEventListener();
     toggleEraserButton.classList.toggle('on');
     if(toggleEraserButton.className === 'on'){
@@ -155,10 +158,32 @@ toggleEraserButton.addEventListener('click', () => {
     }
 })
 
+toggleTransparentButton.addEventListener('click', () => {
+    toggleRainbowButton.classList.remove('on');
+    toggleEraserButton.classList.remove('on');
+    removeDefaultEventListener();
+    toggleTransparentButton.classList.toggle('on');
+    if(toggleTransparentButton.className === 'on'){
+        handleMouseOver = function(event) {
+            const square = event.target;
+            square.style.backgroundColor = '';
+        }
+        changeColor();
+    }
+    else {
+        handleMouseOver = function(event) {
+            const square = event.target;
+            square.style.backgroundColor = colorInput.value;
+        }
+        changeColor();
+    }
+})
+
 const rainbowColors = ['#e81416', '#ffa500', '#faeb36', '#79c314', '#487de7', '#4b369d', '#70369d'];
 
 toggleRainbowButton.addEventListener('click', () => {
     toggleEraserButton.classList.remove('on');
+    toggleTransparentButton.classList.remove('on');
     removeDefaultEventListener();
     toggleRainbowButton.classList.toggle('on');
     if(toggleRainbowButton.className === 'on') {
