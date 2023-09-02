@@ -111,6 +111,14 @@ sizeInput.addEventListener('change', () => {
      setGrid(sizeInput.value); 
 })
 
+function restoreDefaultMouseOver(){
+    handleMouseOver = function(event) {
+        const square = event.target;
+        square.style.backgroundColor = colorInput.value;
+    }
+    changeColor();
+}
+
 colorInput.addEventListener('change', () => {
     toggleDarkenButton.classList.remove('on');
     toggleLightenButton.classList.remove('on');
@@ -119,11 +127,7 @@ colorInput.addEventListener('change', () => {
     toggleEraserButton.classList.remove('on');
     toggleTransparentButton.classList.remove('on');
     removeDefaultEventListener();
-    handleMouseOver = function(event) {
-        const square = event.target;
-        square.style.backgroundColor = colorInput.value;
-    }
-    changeColor();
+    restoreDefaultMouseOver();
 })
 
 gridColorInput.addEventListener('change', () => {
@@ -159,11 +163,7 @@ toggleEraserButton.addEventListener('click', () => {
         changeColor();
     }
     else {
-        handleMouseOver = function(event) {
-            const square = event.target;
-            square.style.backgroundColor = colorInput.value;
-        }
-        changeColor();
+        restoreDefaultMouseOver()   
     }
 })
 
@@ -183,11 +183,7 @@ toggleTransparentButton.addEventListener('click', () => {
         changeColor();
     }
     else {
-        handleMouseOver = function(event) {
-            const square = event.target;
-            square.style.backgroundColor = colorInput.value;
-        }
-        changeColor();
+        restoreDefaultMouseOver();
     }
 })
 
@@ -213,11 +209,7 @@ toggleGrayscaleButton.addEventListener('click', () => {
         changeColor();
     }
     else {
-        handleMouseOver = function(event) {
-            const square = event.target;
-            square.style.backgroundColor = colorInput.value;
-        }
-        changeColor();
+        restoreDefaultMouseOver();
     }
 })
 
@@ -245,11 +237,7 @@ toggleDarkenButton.addEventListener('click', () => {
         changeColor();
     }
     else {
-        handleMouseOver = function(event) {
-            const square = event.target;
-            square.style.backgroundColor = colorInput.value;
-        }
-        changeColor();
+        restoreDefaultMouseOver();
     }
 })
 
@@ -277,11 +265,7 @@ toggleLightenButton.addEventListener('click', () => {
         changeColor();
     }
     else {
-        handleMouseOver = function(event) {
-            const square = event.target;
-            square.style.backgroundColor = colorInput.value;
-        }
-        changeColor();
+        restoreDefaultMouseOver();
     }
 })
 
@@ -303,11 +287,7 @@ toggleRainbowButton.addEventListener('click', () => {
         changeColor();
     }
     else {
-        handleMouseOver = function(event) {
-            const square = event.target;
-            square.style.backgroundColor = colorInput.value;
-        }
-        changeColor();
+        restoreDefaultMouseOver();
     }
 })
 
