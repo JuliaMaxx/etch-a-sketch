@@ -78,8 +78,6 @@ function checkIfOn(){
 }
 
 function changeColor() { 
-    // toggleEraserButton.classList.remove('on'); 
-    toggleRainbowButton.classList.remove('on');
     squares.forEach(square => {
         square.addEventListener('mousedown', handleMouseOver);
     })
@@ -159,15 +157,17 @@ toggleRainbowButton.addEventListener('click', () => {
     toggleEraserButton.classList.remove('on');
     toggleRainbowButton.classList.toggle('on');
     if(toggleRainbowButton.className === 'on') {
-        squares.forEach(square => {
-            square.addEventListener('mouseover', () => {
-                let randomIndex = Math.floor(Math.random() * rainbowColors.length);
-                square.style.backgroundColor = rainbowColors[randomIndex];;
-            })
-        })
+        handleMouseOver = function(event) {
+            const square = event.target;
+            square.style.backgroundColor = rainbowColors[Math.floor(Math.random() * rainbowColors.length)];
+        }
     }
-    else{
-        defaultEventListener();
+    else {
+        handleMouseOver = function(event) {
+            const square = event.target;
+            square.style.backgroundColor = colorInput.value;
+        }
+        changeColor();
     }
 })
 
