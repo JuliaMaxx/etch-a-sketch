@@ -77,6 +77,14 @@ function clearBackgroundColor(color) {
     })
 }
 
+function defaultEventListener(){
+    squares.forEach(square => {
+        square.addEventListener('mouseover', () => {
+            square.style.backgroundColor = colorInput.value;
+        })
+    })
+}
+
 setGrid(16);
 
 sizeInput.addEventListener('change', () => {
@@ -114,11 +122,7 @@ toggleEraserButton.addEventListener('click', () => {
         })
     }
     else{
-        squares.forEach(square => {
-            square.addEventListener('mouseover', () => {
-                square.style.backgroundColor = colorInput.value;
-            })
-        })
+        defaultEventListener();
     }
 })
 
@@ -135,11 +139,7 @@ toggleRainbowButton.addEventListener('click', () => {
         })
     }
     else{
-        squares.forEach(square => {
-            square.addEventListener('mouseover', () => {
-                square.style.backgroundColor = colorInput.value;
-            })
-        })
+        defaultEventListener();
     }
 })
 
