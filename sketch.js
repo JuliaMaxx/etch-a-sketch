@@ -10,6 +10,7 @@ const toggleRainbowButton = document.getElementById('toggle-rainbow');
 const toggleTransparentButton = document.getElementById('toggle-transparent');
 const toggleGrayscaleButton = document.getElementById('toggle-grayscale');
 const toggleDarkenButton = document.getElementById('toggle-darken');
+const toggleLightenButton = document.getElementById('toggle-lighten');
 let previousBackgroundColor = '#ffffff';
 
 function rgbToHex(rgb) {
@@ -112,6 +113,7 @@ sizeInput.addEventListener('change', () => {
 
 colorInput.addEventListener('change', () => {
     toggleDarkenButton.classList.remove('on');
+    toggleLightenButton.classList.remove('on');
     toggleGrayscaleButton.classList.remove('on');
     toggleRainbowButton.classList.remove('on');
     toggleEraserButton.classList.remove('on');
@@ -142,6 +144,7 @@ toggleGridButton.addEventListener('click', () => {
 
 
 toggleEraserButton.addEventListener('click', () => {
+    toggleLightenButton.classList.remove('on');
     toggleDarkenButton.classList.remove('on');
     toggleGrayscaleButton.classList.remove('on');
     toggleRainbowButton.classList.remove('on');
@@ -165,6 +168,7 @@ toggleEraserButton.addEventListener('click', () => {
 })
 
 toggleTransparentButton.addEventListener('click', () => {
+    toggleLightenButton.classList.remove('on');
     toggleDarkenButton.classList.remove('on');
     toggleGrayscaleButton.classList.remove('on');
     toggleRainbowButton.classList.remove('on');
@@ -188,6 +192,7 @@ toggleTransparentButton.addEventListener('click', () => {
 })
 
 toggleGrayscaleButton.addEventListener('click', () => {
+    toggleLightenButton.classList.remove('on');
     toggleDarkenButton.classList.remove('on');
     toggleTransparentButton.classList.remove('on');
     toggleRainbowButton.classList.remove('on');
@@ -218,6 +223,7 @@ toggleGrayscaleButton.addEventListener('click', () => {
 
 toggleDarkenButton.addEventListener('click', () => {
     removeDefaultEventListener();
+    toggleLightenButton.classList.remove('on');
     toggleTransparentButton.classList.remove('on');
     toggleRainbowButton.classList.remove('on');
     toggleEraserButton.classList.remove('on');
@@ -235,7 +241,38 @@ toggleDarkenButton.addEventListener('click', () => {
             const darkerGreen = Math.round(green * (1 - 0.1));
             const darkerBlue = Math.round(blue * (1 - 0.1));
             square.style.backgroundColor = `rgb(${darkerRed}, ${darkerGreen}, ${darkerBlue})`;
-            console.log(square.style.backgroundColor);
+        }
+        changeColor();
+    }
+    else {
+        handleMouseOver = function(event) {
+            const square = event.target;
+            square.style.backgroundColor = colorInput.value;
+        }
+        changeColor();
+    }
+})
+
+toggleLightenButton.addEventListener('click', () => {
+    removeDefaultEventListener();
+    toggleDarkenButton.classList.remove('on');
+    toggleTransparentButton.classList.remove('on');
+    toggleRainbowButton.classList.remove('on');
+    toggleEraserButton.classList.remove('on');
+    toggleGrayscaleButton.classList.remove('on');
+    toggleLightenButton.classList.toggle('on');
+    if(toggleLightenButton.className === 'on'){
+        handleMouseOver = function(event) {
+            const square = event.target;
+            const currentColor = window.getComputedStyle(square).backgroundColor;
+            const values = currentColor.match(/\d+/g);
+            const red = parseInt(values[0], 10);
+            const green = parseInt(values[1], 10);
+            const blue = parseInt(values[2], 10);
+            const lighterRed = Math.round(Math.min(red + (255 - red) * 0.1, 255));
+            const lighterGreen = Math.round(Math.min(green + (255 - green) * 0.1, 255));
+            const lighterBlue = Math.round(Math.min(blue + (255 - blue) * 0.1, 255));
+            square.style.backgroundColor =  `rgb(${lighterRed}, ${lighterGreen}, ${lighterBlue})`;
         }
         changeColor();
     }
@@ -251,6 +288,7 @@ toggleDarkenButton.addEventListener('click', () => {
 const rainbowColors = ['#e81416', '#ffa500', '#faeb36', '#79c314', '#487de7', '#4b369d', '#70369d'];
 
 toggleRainbowButton.addEventListener('click', () => {
+    toggleLightenButton.classList.remove('on');
     toggleDarkenButton.classList.remove('on');
     toggleGrayscaleButton.classList.remove('on');
     toggleEraserButton.classList.remove('on');
