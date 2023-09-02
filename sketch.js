@@ -9,6 +9,7 @@ const toggleEraserButton = document.getElementById('toggle-eraser');
 const toggleRainbowButton = document.getElementById('toggle-rainbow');
 const toggleTransparentButton = document.getElementById('toggle-transparent');
 const toggleGrayscaleButton = document.getElementById('toggle-grayscale');
+const toggleDarkenButton = document.getElementById('toggle-darken');
 let previousBackgroundColor = '#ffffff';
 
 function rgbToHex(rgb) {
@@ -110,6 +111,7 @@ sizeInput.addEventListener('change', () => {
 })
 
 colorInput.addEventListener('change', () => {
+    toggleDarkenButton.classList.remove('on');
     toggleGrayscaleButton.classList.remove('on');
     toggleRainbowButton.classList.remove('on');
     toggleEraserButton.classList.remove('on');
@@ -140,6 +142,7 @@ toggleGridButton.addEventListener('click', () => {
 
 
 toggleEraserButton.addEventListener('click', () => {
+    toggleDarkenButton.classList.remove('on');
     toggleGrayscaleButton.classList.remove('on');
     toggleRainbowButton.classList.remove('on');
     toggleTransparentButton.classList.remove('on');
@@ -162,6 +165,7 @@ toggleEraserButton.addEventListener('click', () => {
 })
 
 toggleTransparentButton.addEventListener('click', () => {
+    toggleDarkenButton.classList.remove('on');
     toggleGrayscaleButton.classList.remove('on');
     toggleRainbowButton.classList.remove('on');
     toggleEraserButton.classList.remove('on');
@@ -184,6 +188,7 @@ toggleTransparentButton.addEventListener('click', () => {
 })
 
 toggleGrayscaleButton.addEventListener('click', () => {
+    toggleDarkenButton.classList.remove('on');
     toggleTransparentButton.classList.remove('on');
     toggleRainbowButton.classList.remove('on');
     toggleEraserButton.classList.remove('on');
@@ -192,7 +197,8 @@ toggleGrayscaleButton.addEventListener('click', () => {
     if(toggleGrayscaleButton.className === 'on'){
         handleMouseOver = function(event) {
             const square = event.target;
-            const values = square.style.backgroundColor.match(/\d+/g);
+            const currentColor = window.getComputedStyle(square).backgroundColor;
+            const values = currentColor.match(/\d+/g);
             const red = parseInt(values[0]);
             const green = parseInt(values[1]);
             const blue = parseInt(values[2]);
@@ -210,9 +216,42 @@ toggleGrayscaleButton.addEventListener('click', () => {
     }
 })
 
+toggleDarkenButton.addEventListener('click', () => {
+    removeDefaultEventListener();
+    toggleTransparentButton.classList.remove('on');
+    toggleRainbowButton.classList.remove('on');
+    toggleEraserButton.classList.remove('on');
+    toggleGrayscaleButton.classList.remove('on');
+    toggleDarkenButton.classList.toggle('on');
+    if(toggleDarkenButton.className === 'on'){
+        handleMouseOver = function(event) {
+            const square = event.target;
+            const currentColor = window.getComputedStyle(square).backgroundColor;
+            const values = currentColor.match(/\d+/g);
+            const red = parseInt(values[0], 10);
+            const green = parseInt(values[1], 10);
+            const blue = parseInt(values[2], 10);
+            const darkerRed = Math.round(red * (1 - 0.1));
+            const darkerGreen = Math.round(green * (1 - 0.1));
+            const darkerBlue = Math.round(blue * (1 - 0.1));
+            square.style.backgroundColor = `rgb(${darkerRed}, ${darkerGreen}, ${darkerBlue})`;
+            console.log(square.style.backgroundColor);
+        }
+        changeColor();
+    }
+    else {
+        handleMouseOver = function(event) {
+            const square = event.target;
+            square.style.backgroundColor = colorInput.value;
+        }
+        changeColor();
+    }
+})
+
 const rainbowColors = ['#e81416', '#ffa500', '#faeb36', '#79c314', '#487de7', '#4b369d', '#70369d'];
 
 toggleRainbowButton.addEventListener('click', () => {
+    toggleDarkenButton.classList.remove('on');
     toggleGrayscaleButton.classList.remove('on');
     toggleEraserButton.classList.remove('on');
     toggleTransparentButton.classList.remove('on');
