@@ -46,15 +46,10 @@ function setGrid(size){
     changeBackgroundColor(backgroundColorInput.value);
 }
 
-
-
-
 let handleMouseOver = function(event) {
     const square = event.target;
     square.style.backgroundColor = colorInput.value;
 }
-
-
 
 function defaultEventListener() {
     squares.forEach(square => {
@@ -78,10 +73,10 @@ function checkIfOn(){
 }
 
 function changeColor() { 
-    squares.forEach(square => {
-        square.addEventListener('mousedown', handleMouseOver);
-    })
     checkIfOn()? defaultEventListener(): removeDefaultEventListener();
+    squares.forEach(square => {
+        square.addEventListener('click', handleMouseOver);
+    })
 }
 
 function changeGridColor(color) {
@@ -135,12 +130,14 @@ toggleGridButton.addEventListener('click', () => {
 
 toggleEraserButton.addEventListener('click', () => {
     toggleRainbowButton.classList.remove('on');
+    removeDefaultEventListener();
     toggleEraserButton.classList.toggle('on');
     if(toggleEraserButton.className === 'on'){
         handleMouseOver = function(event) {
             const square = event.target;
             square.style.backgroundColor = backgroundColorInput.value;
         }
+        changeColor();
     }
     else {
         handleMouseOver = function(event) {
@@ -155,12 +152,14 @@ const rainbowColors = ['#e81416', '#ffa500', '#faeb36', '#79c314', '#487de7', '#
 
 toggleRainbowButton.addEventListener('click', () => {
     toggleEraserButton.classList.remove('on');
+    removeDefaultEventListener();
     toggleRainbowButton.classList.toggle('on');
     if(toggleRainbowButton.className === 'on') {
         handleMouseOver = function(event) {
             const square = event.target;
             square.style.backgroundColor = rainbowColors[Math.floor(Math.random() * rainbowColors.length)];
         }
+        changeColor();
     }
     else {
         handleMouseOver = function(event) {

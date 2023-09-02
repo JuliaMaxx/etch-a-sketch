@@ -67,3 +67,7 @@ body {
 input[type=color], #range-input{
     width: 100%;
 }
+
+button.on{
+    background-color: blue;
+}
