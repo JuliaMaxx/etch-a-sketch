@@ -113,6 +113,7 @@ toggleGridButton.addEventListener('click', () => {
 
 
 toggleEraserButton.addEventListener('click', () => {
+    toggleRainbowButton.classList.remove('on');
     toggleEraserButton.classList.toggle('on');
     if(toggleEraserButton.className === 'on') {
         squares.forEach(square => {
@@ -129,6 +130,7 @@ toggleEraserButton.addEventListener('click', () => {
 const rainbowColors = ['#e81416', '#ffa500', '#faeb36', '#79c314', '#487de7', '#4b369d', '#70369d'];
 
 toggleRainbowButton.addEventListener('click', () => {
+    toggleEraserButton.classList.remove('on');
     toggleRainbowButton.classList.toggle('on');
     if(toggleRainbowButton.className === 'on') {
         squares.forEach(square => {
