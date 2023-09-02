@@ -108,7 +108,14 @@ sizeInput.addEventListener('change', () => {
 })
 
 colorInput.addEventListener('change', () => {
-    changeColor(colorInput.value);
+    toggleRainbowButton.classList.remove('on');
+    toggleEraserButton.classList.remove('on');
+    removeDefaultEventListener();
+    handleMouseOver = function(event) {
+        const square = event.target;
+        square.style.backgroundColor = colorInput.value;
+    }
+    changeColor();
 })
 
 gridColorInput.addEventListener('change', () => {
