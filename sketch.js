@@ -7,6 +7,7 @@ const clearButton = document.getElementById('clear-btn');
 const toggleGridButton = document.getElementById('toggle-grid');
 const toggleEraserButton = document.getElementById('toggle-eraser');
 const toggleRainbowButton = document.getElementById('toggle-rainbow');
+const togglePastelButton = document.getElementById('toggle-pastel');
 const toggleTransparentButton = document.getElementById('toggle-transparent');
 const toggleGrayscaleButton = document.getElementById('toggle-grayscale');
 const toggleDarkenButton = document.getElementById('toggle-darken');
@@ -120,6 +121,7 @@ function restoreDefaultMouseOver(){
 }
 
 colorInput.addEventListener('change', () => {
+    togglePastelButton.classList.remove('on');
     toggleDarkenButton.classList.remove('on');
     toggleLightenButton.classList.remove('on');
     toggleGrayscaleButton.classList.remove('on');
@@ -148,6 +150,7 @@ toggleGridButton.addEventListener('click', () => {
 
 
 toggleEraserButton.addEventListener('click', () => {
+    togglePastelButton.classList.remove('on');
     toggleLightenButton.classList.remove('on');
     toggleDarkenButton.classList.remove('on');
     toggleGrayscaleButton.classList.remove('on');
@@ -168,6 +171,7 @@ toggleEraserButton.addEventListener('click', () => {
 })
 
 toggleTransparentButton.addEventListener('click', () => {
+    togglePastelButton.classList.remove('on');
     toggleLightenButton.classList.remove('on');
     toggleDarkenButton.classList.remove('on');
     toggleGrayscaleButton.classList.remove('on');
@@ -188,6 +192,7 @@ toggleTransparentButton.addEventListener('click', () => {
 })
 
 toggleGrayscaleButton.addEventListener('click', () => {
+    togglePastelButton.classList.remove('on');
     toggleLightenButton.classList.remove('on');
     toggleDarkenButton.classList.remove('on');
     toggleTransparentButton.classList.remove('on');
@@ -215,6 +220,7 @@ toggleGrayscaleButton.addEventListener('click', () => {
 
 toggleDarkenButton.addEventListener('click', () => {
     removeDefaultEventListener();
+    togglePastelButton.classList.remove('on');
     toggleLightenButton.classList.remove('on');
     toggleTransparentButton.classList.remove('on');
     toggleRainbowButton.classList.remove('on');
@@ -243,6 +249,7 @@ toggleDarkenButton.addEventListener('click', () => {
 
 toggleLightenButton.addEventListener('click', () => {
     removeDefaultEventListener();
+    togglePastelButton.classList.remove('on');
     toggleDarkenButton.classList.remove('on');
     toggleTransparentButton.classList.remove('on');
     toggleRainbowButton.classList.remove('on');
@@ -272,6 +279,7 @@ toggleLightenButton.addEventListener('click', () => {
 const rainbowColors = ['#e81416', '#ffa500', '#faeb36', '#79c314', '#487de7', '#4b369d', '#70369d'];
 
 toggleRainbowButton.addEventListener('click', () => {
+    togglePastelButton.classList.remove('on');
     toggleLightenButton.classList.remove('on');
     toggleDarkenButton.classList.remove('on');
     toggleGrayscaleButton.classList.remove('on');
@@ -283,6 +291,29 @@ toggleRainbowButton.addEventListener('click', () => {
         handleMouseOver = function(event) {
             const square = event.target;
             square.style.backgroundColor = rainbowColors[Math.floor(Math.random() * rainbowColors.length)];
+        }
+        changeColor();
+    }
+    else {
+        restoreDefaultMouseOver();
+    }
+})
+
+const pastelColors = ['#CCD4BF', '#E7CBA9', '#EEBAB2', '#F5F3E7', '#F5E2E4', ' #F7F6CF', '#5784BA', '#9AC8EB', '#E5DB9C', '#BEB4C5', '#C47482', '#218B82', '#E9BBB5'];
+
+togglePastelButton.addEventListener('click', () => {
+    toggleRainbowButton.classList.remove('on');
+    toggleLightenButton.classList.remove('on');
+    toggleDarkenButton.classList.remove('on');
+    toggleGrayscaleButton.classList.remove('on');
+    toggleEraserButton.classList.remove('on');
+    toggleTransparentButton.classList.remove('on');
+    removeDefaultEventListener();
+    togglePastelButton.classList.toggle('on');
+    if(togglePastelButton.className === 'on') {
+        handleMouseOver = function(event) {
+            const square = event.target;
+            square.style.backgroundColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];
         }
         changeColor();
     }
