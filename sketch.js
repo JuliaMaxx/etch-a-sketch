@@ -14,6 +14,7 @@ const toggleDarkenButton = document.getElementById('toggle-darken');
 const toggleLightenButton = document.getElementById('toggle-lighten');
 const toggleWarmButton = document.getElementById('toggle-warm');
 const toggleColdButton = document.getElementById('toggle-cold');
+const toggleInvertButton = document.getElementById('toggle-invert');
 const screenshotButton = document.getElementById('screenshot');
 const colorGrabberButton = document.getElementById('color-grabber');
 let previousBackgroundColor = '#ffffff';
@@ -131,6 +132,7 @@ function restoreDefaultMouseOver(){
 
 colorInput.addEventListener('change', () => {
     changeCursor();
+    toggleInvertButton.classList.remove('on');
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -164,6 +166,7 @@ toggleGridButton.addEventListener('click', () => {
 
 toggleEraserButton.addEventListener('click', () => {
     changeCursor();
+    toggleInvertButton.classList.remove('on');
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -189,6 +192,7 @@ toggleEraserButton.addEventListener('click', () => {
 
 toggleTransparentButton.addEventListener('click', () => {
     changeCursor();
+    toggleInvertButton.classList.remove('on');
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -214,6 +218,7 @@ toggleTransparentButton.addEventListener('click', () => {
 
 toggleGrayscaleButton.addEventListener('click', () => {
     changeCursor();
+    toggleInvertButton.classList.remove('on');
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -245,6 +250,7 @@ toggleGrayscaleButton.addEventListener('click', () => {
 
 toggleWarmButton.addEventListener('click', () => {
     changeCursor();
+    toggleInvertButton.classList.remove('on');
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     togglePastelButton.classList.remove('on');
@@ -278,6 +284,7 @@ toggleWarmButton.addEventListener('click', () => {
 
 toggleColdButton.addEventListener('click', () => {
     changeCursor();
+    toggleInvertButton.classList.remove('on');
     colorGrabberButton.classList.remove('on');
     togglePastelButton.classList.remove('on');
     toggleLightenButton.classList.remove('on');
@@ -311,6 +318,7 @@ toggleColdButton.addEventListener('click', () => {
 
 toggleDarkenButton.addEventListener('click', () => {
     changeCursor();
+    toggleInvertButton.classList.remove('on');
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -344,6 +352,7 @@ toggleDarkenButton.addEventListener('click', () => {
 
 toggleLightenButton.addEventListener('click', () => {
     changeCursor();
+    toggleInvertButton.classList.remove('on');
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -375,10 +384,46 @@ toggleLightenButton.addEventListener('click', () => {
     }
 })
 
+toggleInvertButton.addEventListener('click', () => {
+    changeCursor();
+    colorGrabberButton.classList.remove('on');
+    toggleColdButton.classList.remove('on');
+    toggleWarmButton.classList.remove('on');
+    togglePastelButton.classList.remove('on');
+    toggleDarkenButton.classList.remove('on');
+    toggleLightenButton.classList.remove('on');
+    toggleTransparentButton.classList.remove('on');
+    toggleRainbowButton.classList.remove('on');
+    toggleEraserButton.classList.remove('on');
+    toggleGrayscaleButton.classList.remove('on');
+    removeDefaultEventListener();
+    toggleInvertButton.classList.toggle('on');
+    if(toggleInvertButton.className === 'on'){
+        handleMouseOver = function(event) {
+            const square = event.target;
+            const currentColor = window.getComputedStyle(square).backgroundColor;
+            const values = currentColor.match(/\d+/g);
+            const red = parseInt(values[0], 10);
+            const green = parseInt(values[1], 10);
+            const blue = parseInt(values[2], 10);
+            const invertedRed = 255 - red;
+            const invertedBlue = 255 - blue;
+            const invertedGreen = 255 - green;
+            
+            square.style.backgroundColor =  `rgb(${invertedRed}, ${invertedGreen}, ${invertedBlue})`;
+        }
+        changeColor();
+    }
+    else {
+        restoreDefaultMouseOver();
+    }
+})
+
 const rainbowColors = ['#e81416', '#ffa500', '#faeb36', '#79c314', '#487de7', '#4b369d', '#70369d'];
 
 toggleRainbowButton.addEventListener('click', () => {
     changeCursor();
+    toggleInvertButton.classList.remove('on');
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -406,6 +451,7 @@ const pastelColors = ['#CCD4BF', '#E7CBA9', '#EEBAB2', '#F5F3E7', '#F5E2E4', ' #
 
 togglePastelButton.addEventListener('click', () => {
     changeCursor();
+    toggleInvertButton.classList.remove('on');
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -480,6 +526,7 @@ function grabColor(event) {
 
 colorGrabberButton.addEventListener('click', () => {
     container.classList.remove('on');
+    toggleInvertButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
     toggleRainbowButton.classList.remove('on');

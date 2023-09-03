@@ -53,29 +53,29 @@
     </div>
     <div id="main">
         <div class="nav" id="left-nav">
-            <input id="color-input" value="#000000" type="color">
-            <input id="background-color-input" value="#ffffff" type="color">
+            <input id="color-input" value="#000000" type="color" title="Brush Color">
+            <input id="background-color-input" value="#ffffff" type="color" title="Canvas color">
             <button id="clear-btn">Clear</button>
             <button id="toggle-eraser">Eraser</button>
             <button id="toggle-rainbow">Rainbow</button>
             <button id="toggle-transparent">Transparent</button>
             <button id="toggle-grayscale">Grayscale</button>
             <button id="toggle-darken">Darken</button>
-            <button id="toggle-lighten"> Lighten</button>
+            <button id="toggle-lighten">Lighten</button>
         </div>
         <div id="grid-container"></div>
         <div class="nav" id="right-nav">
+            <input id="grid-color-input" value="#000000" type="color" title="Grid color">
             <button id="toggle-grid">Grid</button>
-            <input id="grid-color-input" value="#000000" type="color">
             <button id="toggle-pastel">Pastel</button>
             <button id="toggle-warm">Warm</button>
             <button id="toggle-cold">Cold</button>
             <button id="screenshot">Screenshot</button>
             <button id="color-grabber">Color Grabber</button>
-            <div>color</div>
+            <button id="toggle-invert">Invert</button>
             <div class="input-wrapper">
                 <div id="input-value">16x16</div>
-                <input id="size-input" value="16" type="range" min="1" max="64">
+                <input id="size-input" value="16" type="range" min="1" max="64" title="Grid size">
             </div>
         </div>
     </div>
