@@ -429,8 +429,6 @@ container.addEventListener('click', () => {
 
 
 const backgrounds = document.querySelectorAll('.background');
-const backgroundsLeft = document.querySelectorAll('.backgrounds .background');
-const backgroundsRight = document.querySelectorAll('.backgrounds2 .background');
 
 backgrounds.forEach(background => {
     background.addEventListener('click', () => {

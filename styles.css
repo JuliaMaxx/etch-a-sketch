@@ -69,9 +69,7 @@ input[type=color], #range-input{
     width: 100%;
 }
 
-button.on{
-    background-color: blue;
-}
+
 
 
 /* header */
@@ -84,7 +82,7 @@ button.on{
 h1 {
     -webkit-text-stroke: 2px black;
     color: white;
-    font-family: 'Squada One','sans-serif';
+    font-family: 'Squada One', sans-serif;
     font-size: 60px;
     margin:unset;
     padding:unset;
@@ -116,4 +114,27 @@ h1 {
 }
 .backgrounds2 {
     right: 10px;
+}
+
+/* buttons */
+button {
+    border: unset;
+    border-radius: 3px;
+    padding: 10px 20px;
+    font-size: 19px;
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(1, 1, 1);
+    background-color: #d9d9d9;
+    font-family: 'Squada One', sans-serif;
+    transition:all 0.3s;
+}
+button:hover {
+    box-shadow: var(--shadow-elevation-medium);
+    border: 1px solid red;
+    color:rgb(255, 11, 11);
+}
+button.on{
+    border: 1px solid red;
+    color:rgb(255, 11, 11);
+    box-shadow: var(--shadow-elevation-medium);
 }
