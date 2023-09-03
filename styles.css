@@ -67,9 +67,38 @@ body {
 /* inputs */
 input[type=color], #range-input{
     width: 100%;
+    
 }
-
-
+input[type=color]{
+    border-radius: 3px;
+    height: 40px;
+}
+input[type=color]:hover {
+    border-color:red;
+    box-shadow: var(--shadow-elevation-medium);
+}
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #eaeaea;
+    height: 9px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 23px;
+    height: 23px;
+    border: 2px solid white;
+    background-color: #141414;
+    border-radius: 50%;
+    cursor:pointer;
+    transition: all 0.5s;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+    background-color: red;
+}
 
 
 /* header */
