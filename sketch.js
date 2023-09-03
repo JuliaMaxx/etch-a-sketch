@@ -52,6 +52,8 @@ function setGrid(size){
         container.append(newDiv);
     }
     squares = document.querySelectorAll('.square');
+    changeCursor();
+    colorGrabberButton.classList.remove('on');
     changeColor();
     changeGridColor(gridColorInput.value);
     changeBackgroundColor(backgroundColorInput.value);
@@ -128,6 +130,7 @@ function restoreDefaultMouseOver(){
 }
 
 colorInput.addEventListener('change', () => {
+    changeCursor();
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -160,6 +163,7 @@ toggleGridButton.addEventListener('click', () => {
 
 
 toggleEraserButton.addEventListener('click', () => {
+    changeCursor();
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -184,6 +188,7 @@ toggleEraserButton.addEventListener('click', () => {
 })
 
 toggleTransparentButton.addEventListener('click', () => {
+    changeCursor();
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -208,6 +213,7 @@ toggleTransparentButton.addEventListener('click', () => {
 })
 
 toggleGrayscaleButton.addEventListener('click', () => {
+    changeCursor();
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -238,6 +244,7 @@ toggleGrayscaleButton.addEventListener('click', () => {
 })
 
 toggleWarmButton.addEventListener('click', () => {
+    changeCursor();
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     togglePastelButton.classList.remove('on');
@@ -270,6 +277,7 @@ toggleWarmButton.addEventListener('click', () => {
 })
 
 toggleColdButton.addEventListener('click', () => {
+    changeCursor();
     colorGrabberButton.classList.remove('on');
     togglePastelButton.classList.remove('on');
     toggleLightenButton.classList.remove('on');
@@ -302,6 +310,7 @@ toggleColdButton.addEventListener('click', () => {
 })
 
 toggleDarkenButton.addEventListener('click', () => {
+    changeCursor();
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -334,6 +343,7 @@ toggleDarkenButton.addEventListener('click', () => {
 })
 
 toggleLightenButton.addEventListener('click', () => {
+    changeCursor();
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -368,6 +378,7 @@ toggleLightenButton.addEventListener('click', () => {
 const rainbowColors = ['#e81416', '#ffa500', '#faeb36', '#79c314', '#487de7', '#4b369d', '#70369d'];
 
 toggleRainbowButton.addEventListener('click', () => {
+    changeCursor();
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -394,6 +405,7 @@ toggleRainbowButton.addEventListener('click', () => {
 const pastelColors = ['#CCD4BF', '#E7CBA9', '#EEBAB2', '#F5F3E7', '#F5E2E4', ' #F7F6CF', '#5784BA', '#9AC8EB', '#E5DB9C', '#BEB4C5', '#C47482', '#218B82', '#E9BBB5'];
 
 togglePastelButton.addEventListener('click', () => {
+    changeCursor();
     colorGrabberButton.classList.remove('on');
     toggleColdButton.classList.remove('on');
     toggleWarmButton.classList.remove('on');
@@ -433,12 +445,15 @@ screenshotButton.addEventListener("click", function () {
     });
 });
 
+function changeCursor(){
+    checkIfOn()? container.style.cursor = 'url("icons8-cursor-22.png"), auto': container.style.cursor = 'auto';
+}
+
 container.addEventListener('click', () => {
     container.classList.toggle('on');
     checkIfOn()? container.style.cursor = 'url("icons8-cursor-22.png"), auto': container.style.cursor = 'auto';
     changeColor();
 })
-
 
 const backgrounds = document.querySelectorAll('.background');
 
@@ -457,10 +472,10 @@ backgrounds.forEach(background => {
 function grabColor(event) {
     const squareColor = window.getComputedStyle(event.target).backgroundColor;
     colorInput.value = rgbToHex(squareColor);
+    colorGrabberButton.classList.remove('on');
     squares.forEach(square => {
         square.removeEventListener('click', grabColor);
     })
-    colorGrabberButton.classList.remove('on');
 }
 
 colorGrabberButton.addEventListener('click', () => {
@@ -478,7 +493,7 @@ colorGrabberButton.addEventListener('click', () => {
     squares.forEach(square => {
         square.removeEventListener('click', handleMouseOver);
     })
-    container.style.cursor = 'url("icons8-cursor-22.png"), auto'
+    container.style.cursor = 'url("icons8-cursor-22 (1).png"), auto'
     colorGrabberButton.classList.toggle('on');
     if(colorGrabberButton.className === 'on') {
         squares.forEach(square => {
@@ -487,6 +502,7 @@ colorGrabberButton.addEventListener('click', () => {
         restoreDefaultMouseOver();
     }
     else {
+        changeCursor();
         squares.forEach(square => {
             square.removeEventListener('click', grabColor);
         })
