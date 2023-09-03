@@ -88,6 +88,9 @@ button.on{
     border-radius: 27px;
     transition: all 0.5s;
 }
+.background.default img {
+    border-color: red;
+}
 .background img:hover {
     border-radius: 10px;
 }
