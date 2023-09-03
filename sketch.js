@@ -114,6 +114,7 @@ function clearBackgroundColor(color) {
 setGrid(16);
 
 sizeInput.addEventListener('change', () => {
+    document.getElementById('input-value').innerText = `${sizeInput.value}x${sizeInput.value}`;
      setGrid(sizeInput.value); 
 })
 

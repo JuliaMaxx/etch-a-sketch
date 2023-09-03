@@ -14,7 +14,7 @@ body {
 }
 #main {
     display:flex;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.3);
     width: 100%;
     height: 550px;
     align-items: center;
@@ -80,6 +80,7 @@ input[type=color]:hover {
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
+    margin-top: 7px;
     background-color: #eaeaea;
     height: 9px;
     border: 1px solid black;
@@ -94,10 +95,18 @@ input[type="range"]::-webkit-slider-thumb {
     background-color: #141414;
     border-radius: 50%;
     cursor:pointer;
-    transition: all 0.5s;
+    transition: all 0.2s;
 }
 input[type="range"]::-webkit-slider-thumb:hover {
     background-color: red;
+}
+.input-wrapper {
+    color:rgb(255, 255, 255);
+    font-size: 22px;
+    font-weight:900;
+    text-align: center;
+    -webkit-text-stroke: 1px rgb(0, 0, 0);
+    font-family: 'Squada One', sans-serif;
 }
 
 
