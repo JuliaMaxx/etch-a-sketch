@@ -6,7 +6,7 @@ body {
     gap: 20px;
     margin: 0px;
     padding:0px;
-    background-image: url('background.jpg');
+    background-image: url('backgrounds/background.jpg');
     background-size: cover; 
     background-repeat: no-repeat;
     height: 100vh;
