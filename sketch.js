@@ -429,13 +429,17 @@ container.addEventListener('click', () => {
 
 
 const backgrounds = document.querySelectorAll('.background');
+const backgroundsLeft = document.querySelectorAll('.backgrounds .background');
+const backgroundsRight = document.querySelectorAll('.backgrounds2 .background');
 
 backgrounds.forEach(background => {
     background.addEventListener('click', () => {
         backgrounds.forEach((bg) => {
-            bg.style.display = 'inline';
-            background.style.display = 'none';
+            bg.firstElementChild.style.borderColor = 'white';
         })
+        background.firstElementChild.style.borderColor = 'red';
         document.querySelector('body').style.backgroundImage = `url('${background.dataset.image}')`; 
     })
 })
+
+

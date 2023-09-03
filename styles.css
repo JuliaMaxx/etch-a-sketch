@@ -84,10 +84,18 @@ button.on{
     width: 50px;
     height: 50px;
     border-radius: 25px;
+    border:3px solid white;
+    border-radius: 27px;
+    transition: all 0.5s;
+}
+.background img:hover {
+    border-radius: 10px;
 }
 .backgrounds, .backgrounds2 {
     position: absolute;
+    gap: 15px;
     display: flex;
+    justify-content: center;
 }
 .backgrounds {
     left: 10px;
