@@ -426,3 +426,16 @@ container.addEventListener('click', () => {
     checkIfOn()? container.style.cursor = 'url("icons8-cursor-22.png"), auto': container.style.cursor = 'auto';
     changeColor();
 })
+
+
+const backgrounds = document.querySelectorAll('.background');
+
+backgrounds.forEach(background => {
+    background.addEventListener('click', () => {
+        backgrounds.forEach((bg) => {
+            bg.style.display = 'inline';
+            background.style.display = 'none';
+        })
+        document.querySelector('body').style.backgroundImage = `url('${background.dataset.image}')`; 
+    })
+})
