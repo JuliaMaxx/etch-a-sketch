@@ -1,17 +1,17 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const images = document.querySelectorAll('img');
-    const preloader = document.querySelector('.loader');
-    let imageCount = 0;
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll("img");
+  const preloader = document.querySelector(".loader");
+  let imageCount = 0;
 
-    function checkImagesLoaded() {
-        imageCount++;
-        console.log(imageCount);
-        if (imageCount === images.length) {
-            preloader.style.display = 'none';
-        }
+  function checkImagesLoaded() {
+    imageCount++;
+    console.log(imageCount);
+    if (imageCount === images.length) {
+      preloader.style.display = "none";
     }
+  }
 
-    images.forEach(image => {
-        image.addEventListener('load', checkImagesLoaded);
-    });
+  images.forEach((image) => {
+    image.addEventListener("load", checkImagesLoaded);
+  });
 });

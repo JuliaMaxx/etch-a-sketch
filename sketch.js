@@ -133,6 +133,7 @@ function clearBackgroundColor(color) {
   });
 }
 
+// set the default size of the grid
 setGrid(16);
 
 sizeInput.addEventListener("change", () => {
@@ -394,10 +395,10 @@ togglePastelButton.addEventListener("click", () => {
 
 screenshotButton.addEventListener("click", function () {
   html2canvas(container).then(function (canvas) {
-    // Convert the canvas to an image data URL
+    // convert the canvas to an image data URL
     const screenshotDataURL = canvas.toDataURL("image/png");
 
-    // Create a download link
+    // create a download link
     const downloadLink = document.createElement("a");
     downloadLink.href = screenshotDataURL;
     downloadLink.download = "screenshot.png";
@@ -421,7 +422,6 @@ container.addEventListener("click", () => {
     : (container.style.cursor = "auto");
   changeColor();
 });
-
 
 backgrounds.forEach((background) => {
   background.addEventListener("click", () => {
