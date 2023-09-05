@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function checkImagesLoaded() {
     imageCount++;
-    console.log(imageCount);
     if (imageCount === images.length) {
       preloader.style.display = "none";
     }

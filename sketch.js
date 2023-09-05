@@ -411,15 +411,13 @@ screenshotButton.addEventListener("click", function () {
 
 function changeCursor() {
   checkIfOn()
-    ? (container.style.cursor = 'url("icons8-cursor-22.png"), auto')
+    ? (container.style.cursor = 'url("/icons/icons8-cursor-22.png"), auto')
     : (container.style.cursor = "auto");
 }
 
 container.addEventListener("click", () => {
   container.classList.toggle("on");
-  checkIfOn()
-    ? (container.style.cursor = 'url("icons8-cursor-22.png"), auto')
-    : (container.style.cursor = "auto");
+  changeCursor();
   changeColor();
 });
 
@@ -453,7 +451,7 @@ colorGrabberButton.addEventListener("click", () => {
   squares.forEach((square) => {
     square.removeEventListener("click", handleMouseOver);
   });
-  container.style.cursor = 'url("icons8-cursor-22 (1).png"), auto';
+  container.style.cursor = 'url("/icons/icons8-cursor-22 (1).png"), auto';
   colorGrabberButton.classList.toggle("on");
   if (colorGrabberButton.classList.contains("on")) {
     squares.forEach((square) => {
