@@ -33,6 +33,17 @@ function turnOffToggles(onToggle){
     })
 }
 
+function getRgbColors(rgb){
+    const values = rgb.match(/\d+/g);
+    if (!values || values.length !== 3) {
+        return rgb;
+    }
+    const red = parseInt(values[0]);
+    const green = parseInt(values[1]);
+    const blue = parseInt(values[2]);
+    return [red, green, blue];
+}
+
 function rgbToHex(rgb) {
     const values = rgb.match(/\d+/g);
 
@@ -209,10 +220,7 @@ toggleGrayscaleButton.addEventListener('click', () => {
         handleMouseOver = function(event) {
             const square = event.target;
             const currentColor = window.getComputedStyle(square).backgroundColor;
-            const values = currentColor.match(/\d+/g);
-            const red = parseInt(values[0]);
-            const green = parseInt(values[1]);
-            const blue = parseInt(values[2]);
+            const [red, green, blue] = getRgbColors(currentColor);
             const gray = 0.299 * red + 0.587 * green + 0.114 * blue
             square.style.backgroundColor = `rgb(${gray}, ${gray}, ${gray})`;
         }
@@ -232,10 +240,7 @@ toggleWarmButton.addEventListener('click', () => {
         handleMouseOver = function(event) {
             const square = event.target;
             const currentColor = window.getComputedStyle(square).backgroundColor;
-            const values = currentColor.match(/\d+/g);
-            const red = parseInt(values[0]);
-            const green = parseInt(values[1]);
-            const blue = parseInt(values[2]);
+            const [red, green, blue] = getRgbColors(currentColor);
             const warmerRed = Math.min(255, red + 20); 
             const coolerGreen = Math.max(0, green - 10);
             const coolerBlue = Math.max(0, blue - 10); 
@@ -257,10 +262,7 @@ toggleColdButton.addEventListener('click', () => {
         handleMouseOver = function(event) {
             const square = event.target;
             const currentColor = window.getComputedStyle(square).backgroundColor;
-            const values = currentColor.match(/\d+/g);
-            const red = parseInt(values[0]);
-            const green = parseInt(values[1]);
-            const blue = parseInt(values[2]);
+            const [red, green, blue] = getRgbColors(currentColor);
             const coolerBlue = Math.min(255, blue + 20); 
             const warmerRed = Math.max(0, red - 10);
             const warmerGreen = Math.max(0, green - 10);
@@ -282,10 +284,7 @@ toggleDarkenButton.addEventListener('click', () => {
         handleMouseOver = function(event) {
             const square = event.target;
             const currentColor = window.getComputedStyle(square).backgroundColor;
-            const values = currentColor.match(/\d+/g);
-            const red = parseInt(values[0], 10);
-            const green = parseInt(values[1], 10);
-            const blue = parseInt(values[2], 10);
+            const [red, green, blue] = getRgbColors(currentColor);
             const darkerRed = Math.round(red * (1 - 0.1));
             const darkerGreen = Math.round(green * (1 - 0.1));
             const darkerBlue = Math.round(blue * (1 - 0.1));
@@ -307,10 +306,7 @@ toggleLightenButton.addEventListener('click', () => {
         handleMouseOver = function(event) {
             const square = event.target;
             const currentColor = window.getComputedStyle(square).backgroundColor;
-            const values = currentColor.match(/\d+/g);
-            const red = parseInt(values[0], 10);
-            const green = parseInt(values[1], 10);
-            const blue = parseInt(values[2], 10);
+            const [red, green, blue] = getRgbColors(currentColor);
             const lighterRed = Math.round(Math.min(red + (255 - red) * 0.1, 255));
             const lighterGreen = Math.round(Math.min(green + (255 - green) * 0.1, 255));
             const lighterBlue = Math.round(Math.min(blue + (255 - blue) * 0.1, 255));
@@ -332,10 +328,7 @@ toggleInvertButton.addEventListener('click', () => {
         handleMouseOver = function(event) {
             const square = event.target;
             const currentColor = window.getComputedStyle(square).backgroundColor;
-            const values = currentColor.match(/\d+/g);
-            const red = parseInt(values[0], 10);
-            const green = parseInt(values[1], 10);
-            const blue = parseInt(values[2], 10);
+            const [red, green, blue] = getRgbColors(currentColor);
             const invertedRed = 255 - red;
             const invertedBlue = 255 - blue;
             const invertedGreen = 255 - green;
@@ -429,6 +422,7 @@ backgrounds.forEach(background => {
 
 function grabColor(event) {
     const squareColor = window.getComputedStyle(event.target).backgroundColor;
+    squareColor === "rgba(0, 0, 0, 0)"? colorInput.value === "#000000":
     colorInput.value = rgbToHex(squareColor);
     colorGrabberButton.classList.remove('on');
     squares.forEach(square => {
