@@ -1,6 +1,8 @@
 # Etch a Sketch
 ## Live Preview: https://juliamaxx.github.io/etch-a-sketch/
 ### Description: website made for pixel-painting 
+![image](https://github.com/JuliaMaxx/etch-a-sketch/assets/121096183/7623c1af-1715-40cf-adb9-71e7e5461d15)
+
 ### Features:
 - website mainly consist of square `canvas` and `buttons` to modify(paint on) it
 - the size of the grid(canvas) can be modified by range input from `1x1` to `64x64`
