@@ -3,41 +3,69 @@
 ### Description: website made for pixel-painting 
 ![image](https://github.com/JuliaMaxx/etch-a-sketch/assets/121096183/7623c1af-1715-40cf-adb9-71e7e5461d15)
 
-### Features:
-- website mainly consist of square `canvas` and `buttons` to modify(paint on) it
-- the size of the grid(canvas) can be modified by range input from `1x1` to `64x64`
-  - changing size of the grid erases everything that has been painted
-- canvas has three states `activated`, `not activated` and `color grabber`
-  - when canvas is in activated state - `cursor is yellow`
-  - when canvas is in color grabber state - `cursor is blue`
-  - when is not activated - cursor is browser's `default cursor`
-- **canvas *activates* when `clicked on`**:
-  - default behaviour is to paint black squares that are hovered on
-  - default hover behaviour can be changed by:
-    -  `color picker`: lets you choose any color for painting
-    -  `eraser`: returns color to the background color of the canvas
-    -  `rainbow`: paints squares in random rainbow color
-    -  `transparent`: makes squares transparent
-    -  `grayscale`: turns color to its balck and white version
-    -  `darken`: makes color 10% darker
-    -  `lighten`: makes color 10% lighter
-    -  `pastel`: paints squares in random pastel color
-    -  `warm`: makes color warmer
-    -  `cold`: makes color cooler
-    -  `invert`: inverts color using **rgb(255 - R, 255 - G, 255 - B)** formula, where R, G and B are initial values
-  - any modification can be turned on and off by **clicking the corresponding button**
-    
-- **canvas *deactivates* when `clicked on in active state`**
-  
-- **canvas is in *color grabber* mode when `color grabber button is turned on`**
-  - color grabber lets you chose any color that is already on the canvas by clicking on it
-  - color grabber mode `turns off automatically` when the color is picked, the **canvas becomes active**
-- **background color** can be chosen for the canvas itself using second color picker
-  - changing background color does not erase what was painted
-- `clear` button lets you erase everything that has been painted, returning canvas to its set background color
-- `grid` button lets you turn off/on grid lines on the canvas
-- third color picker allows you to change `grid color`
-- `screenshot` button lets you make screenshot of the canvas
-- there is a choice of `10` images as background of the page
-  - since images take a while to load, there is a `preloader` that was styled by codepen.io
-- website is desktop-only 
+# Canvas Features
+
+## Canvas Features:
+
+1. **Resizable Grid:**
+   - Modify the size of the grid (canvas) from 1 x 1 to 64 x 64 using a range input.
+
+2. **Clearing the Grid:**
+   - Changing the size of the grid erases everything that has been painted.
+
+3. **Canvas States:**
+   - **Activated:** Cursor is yellow.
+   - **Not Activated:** Cursor is the browser's default cursor.
+   - **Color Grabber:** Cursor is blue.
+
+4. **Activation and Deactivation:**
+   - Canvas activates when clicked on.
+   - Canvas deactivates when clicked on in the active state.
+
+## Painting Options:
+
+1. **Default Behavior:**
+   - Paint black squares that are hovered on.
+
+2. **Hover Behavior Customization:**
+   - **Color Picker:** Choose any color for painting.
+   - **Eraser:** Return color to the background color of the canvas.
+   - **Rainbow:** Paint squares in random rainbow colors.
+   - **Transparent:** Make squares transparent.
+   - **Grayscale:** Turn color to its black and white version.
+   - **Darken:** Make color 10% darker.
+   - **Lighten:** Make color 10% lighter.
+   - **Pastel:** Paint squares in random pastel colors.
+   - **Warm:** Make color warmer.
+   - **Cold:** Make color cooler.
+   - **Invert:** Invert color using the formula rgb(255 - R, 255 - G, 255 - B).
+
+## Canvas Controls:
+
+1. **Activation Modes:**
+   - **Color Grabber Mode:** Turned on/off by clicking the corresponding button.
+   - Color grabber mode turns off automatically when the color is picked.
+
+2. **Background Color:**
+   - Choose background color for the canvas using the second color picker.
+   - Changing background color does not erase what was painted.
+
+3. **Grid Controls:**
+   - **Grid Lines:** Turn off/on grid lines on the canvas.
+   - Third color picker allows you to change grid color.
+
+4. **Additional Features:**
+   - **Clear Button:** Erase everything that has been painted, returning canvas to its set background color.
+   - **Screenshot Button:** Make a screenshot of the canvas.
+
+## User Experience:
+
+1. **Preloader:**
+   - Styled by codepen.io to handle image loading.
+
+2. **Desktop Only:**
+   - The website is designed for desktop-only use.
+
+3. **Background Images:**
+   - Choice of 10 images as the background of the page.
+
